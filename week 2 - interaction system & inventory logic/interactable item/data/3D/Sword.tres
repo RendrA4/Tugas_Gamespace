@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://07y2e1b7acwm"]
+
+[ext_resource type="Script" uid="uid://ca0kjlsvd0s1f" path="res://week 2 - interaction system & inventory logic/interactable item/ItemData.gd" id="1_uylck"]
+
+[resource]
+script = ExtResource("1_uylck")
+name = "Sword"
+desc = "Just Sword"
+type = 3
+metadata/_custom_type_script = "uid://ca0kjlsvd0s1f"

@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bjgl0cqk6e4bm"]
+
+[ext_resource type="Script" uid="uid://c7yjplp48emix" path="res://week 2 - interaction system & inventory logic/interactable item/Item3D.gd" id="1_rp0ue"]
+[ext_resource type="Resource" uid="uid://07y2e1b7acwm" path="res://week 2 - interaction system & inventory logic/interactable item/data/3D/Sword.tres" id="2_3ufgu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rp0ue"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp0ue"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.04
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ufgu"]
+next_pass = SubResource("StandardMaterial3D_rp0ue")
+albedo_color = Color(0.3808645, 0.07906083, 0.28779632, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.04
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ufgu"]
+size = Vector3(0.5040283, 0.5108032, 0.50891113)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ufgu"]
+font_size = 20
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3ufgu"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Sword" type="StaticBody3D" unique_id=1942871897 node_paths=PackedStringArray("mesh", "viscue_text")]
+script = ExtResource("1_rp0ue")
+item_data = ExtResource("2_3ufgu")
+mesh = NodePath("MeshInstance3D")
+viscue_text = NodePath("SubViewport/Label")
+metadata/_custom_type_script = "uid://c7yjplp48emix"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1414156727]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.26644555, 0)
+mesh = SubResource("BoxMesh_rp0ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ufgu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=984438008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017700195, 0.263673, -0.002380371)
+shape = SubResource("BoxShape3D_3ufgu")
+debug_color = Color(0.74816746, 0.44334587, 0.34558225, 1)
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1138840168]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(400, 50)
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=1128559810]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -14.0
+offset_right = 36.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E : Item"
+label_settings = SubResource("LabelSettings_3ufgu")
+
+[node name="Viscue" type="Sprite3D" parent="." unique_id=2074096853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91345406, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_3ufgu")

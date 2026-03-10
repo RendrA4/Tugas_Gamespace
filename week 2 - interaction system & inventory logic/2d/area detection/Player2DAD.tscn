@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dcn0yhs82gngm"]
+
+[ext_resource type="Script" uid="uid://c50me1tsasdl0" path="res://week 1 - movement & feel/2d/Player2D.gd" id="1_tfhl7"]
+[ext_resource type="Texture2D" uid="uid://bmywpyxw3hjgj" path="res://assets/2d/platformer pack/Characters/character_purple_hit.svg" id="2_28pge"]
+[ext_resource type="Texture2D" uid="uid://vs0rvrfwverk" path="res://assets/2d/platformer pack/Characters/character_purple_front.svg" id="3_62fc6"]
+[ext_resource type="Texture2D" uid="uid://fo5cpby21s0v" path="res://assets/2d/platformer pack/Characters/character_purple_jump.svg" id="4_kvjvd"]
+[ext_resource type="Texture2D" uid="uid://chawdvikvpue4" path="res://assets/2d/platformer pack/Characters/character_purple_idle.svg" id="5_slob3"]
+[ext_resource type="Texture2D" uid="uid://chydx0ntk35a7" path="res://assets/2d/platformer pack/Characters/character_purple_walk_a.svg" id="6_6b0n7"]
+[ext_resource type="Texture2D" uid="uid://14kr5erln3bt" path="res://assets/2d/platformer pack/Characters/character_purple_walk_b.svg" id="7_8hyjo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i6eer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_28pge")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_62fc6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kvjvd")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_slob3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6b0n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8hyjo")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_li6t2"]
+radius = 40.0
+height = 92.0
+
+[node name="Player" type="CharacterBody2D" unique_id=995696200 node_paths=PackedStringArray("animation")]
+script = ExtResource("1_tfhl7")
+animation = NodePath("Animation")
+move_speed = 320.0
+jump_force = 500.0
+friction = 80.0
+acceleration = 10.0
+gravity_mult = 1.0
+speed_mult = 1.0
+jump_mult = 1.0
+coyote_time = 0.2
+jump_buffer = 0.1
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=42108993]
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_i6eer")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1992398780]
+position = Vector2(0, -46)
+shape = SubResource("CapsuleShape2D_li6t2")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=411604723]
+offset = Vector2(0, -120)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

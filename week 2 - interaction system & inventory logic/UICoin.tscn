@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c7nhe4fqyjv3p"]
+
+[ext_resource type="Script" uid="uid://ch4giqfwvnmh8" path="res://week 2 - interaction system & inventory logic/UICoin.gd" id="1_1dxjd"]
+[ext_resource type="Texture2D" uid="uid://7q3l64lgnkux" path="res://assets/2d/platformer pack/Tiles/hud_coin.svg" id="1_u8jur"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1dxjd"]
+font_size = 23
+font_color = Color(0, 0, 0, 1)
+
+[node name="UiCoin" type="Control" unique_id=183794922]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1dxjd")
+
+[node name="Coin" type="TextureRect" parent="." unique_id=1609929579]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_u8jur")
+
+[node name="Label" type="Label" parent="." unique_id=2028712852]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 14.0
+offset_right = 97.0
+offset_bottom = 46.0
+text = ": "
+label_settings = SubResource("LabelSettings_1dxjd")

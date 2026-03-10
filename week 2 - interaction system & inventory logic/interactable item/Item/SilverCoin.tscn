@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dypq4q8syio0p"]
+
+[ext_resource type="Script" uid="uid://r5gmhagdy58e" path="res://week 2 - interaction system & inventory logic/interactable item/Item2D.gd" id="1_tt87l"]
+[ext_resource type="Resource" uid="uid://dus67xuw5ni7d" path="res://week 2 - interaction system & inventory logic/interactable item/data/2D/SilverCoin.tres" id="2_1ckvm"]
+[ext_resource type="Texture2D" uid="uid://dqehc0md6kaun" path="res://assets/2d/platformer pack/Tiles/coin_silver.svg" id="3_ktt1y"]
+[ext_resource type="Script" uid="uid://bx67yd0tqlogf" path="res://week 2 - interaction system & inventory logic/interactable item/component/AreaChecker.gd" id="3_sxkhf"]
+[ext_resource type="Texture2D" uid="uid://lnni7sv70eti" path="res://assets/2d/platformer pack/Tiles/coin_silver_side.svg" id="4_xd1ac"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jqjr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ktt1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xd1ac")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tx7ub"]
+radius = 30.066593
+
+[node name="SilverCoin" type="Node2D" unique_id=1768713139 node_paths=PackedStringArray("area_checker")]
+script = ExtResource("1_tt87l")
+item_data = ExtResource("2_1ckvm")
+area_checker = NodePath("AreaChecker2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1494841905]
+sprite_frames = SubResource("SpriteFrames_0jqjr")
+autoplay = "default"
+frame_progress = 0.40770456
+
+[node name="AreaChecker2D" type="Area2D" parent="." unique_id=1920120693]
+script = ExtResource("3_sxkhf")
+group_name = "Player"
+metadata/_custom_type_script = "uid://bx67yd0tqlogf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaChecker2D" unique_id=63668450]
+shape = SubResource("CircleShape2D_tx7ub")
