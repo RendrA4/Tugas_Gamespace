@@ -118,3 +118,13 @@ func _facing_direction() -> void:
 	elif _direction < 0:
 		animation.flip_h = true
 		grapple_ray.target_position.x = -200
+
+
+@warning_ignore("unused_parameter")
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+@warning_ignore("unused_parameter")
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

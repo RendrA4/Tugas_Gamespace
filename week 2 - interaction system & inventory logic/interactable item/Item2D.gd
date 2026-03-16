@@ -1,11 +1,12 @@
 class_name Item2D
 extends Node2D
-## class digunakan sebagai template untuk setiap item yang ada
-"res://week 2 - interaction system & inventory logic/2d/area detection/PB2DAreaDetection.tscn"
 
 @export var item_data: ItemData = null
 @export var area_checker: AreaChecker2D = null
+@export var is_light_switch: bool = false
+@export var room_light: CanvasModulate
 
+var light_on = true
 var item_dict: Dictionary[String, ItemData] = {}
 
 func get_item_dict() -> Dictionary:
@@ -24,5 +25,20 @@ func _process(_delta: float) -> void:
 		collect()
 
 func collect() -> void:
+	if is_light_switch:
+		toggle_light()
+		return
+
 	InventoryManager.add_to_inventory.emit(item_data.name, item_dict)
 	queue_free()
+
+func toggle_light():
+	if room_light == null:
+		return
+
+	if light_on:
+		room_light.color = Color(0.6,0.6,0.6)
+	else:
+		room_light.color = Color(1,1,1)
+
+	light_on = !light_on
