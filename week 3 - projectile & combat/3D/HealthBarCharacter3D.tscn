@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://lwh4llml0b1i"]
+
+[ext_resource type="Script" uid="uid://cdrcxvedg4hqc" path="res://week 3 - projectile & combat/3D/HealthBar3D.gd" id="1_nv6qr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekbhl"]
+bg_color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv6qr"]
+bg_color = Color(0.37254903, 0.8039216, 0.22745098, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_cvatp"]
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = null
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ekbhl")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_nv6qr")
+
+[node name="Healthbar" type="ProgressBar" unique_id=1951410619]
+offset_right = 184.0
+offset_bottom = 32.0
+theme = SubResource("Theme_cvatp")
+value = 50.0
+show_percentage = false
+script = ExtResource("1_nv6qr")

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bscly20471et7"]
+
+[ext_resource type="Script" uid="uid://df4gnfrtg43pb" path="res://week 3 - projectile & combat/3D/Turret.gd" id="1_cynpp"]
+[ext_resource type="PackedScene" uid="uid://btoxc7ja4qwou" path="res://week 3 - projectile & combat/3D/Projectile3D.tscn" id="2_wwpap"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1b7js"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1b7js"]
+albedo_color = Color(0.95686275, 0.23921569, 0.20784314, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1b7js"]
+material = SubResource("StandardMaterial3D_1b7js")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cynpp"]
+
+[node name="Turret" type="StaticBody3D" unique_id=797313203]
+script = ExtResource("1_cynpp")
+projectile_scene = ExtResource("2_wwpap")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1238134888]
+mesh = SubResource("BoxMesh_1b7js")
+
+[node name="Head" type="MeshInstance3D" parent="Body" unique_id=1767780351]
+transform = Transform3D(0.75, 0, 0, 0, -1.5298985e-08, -0.75, 0, 0.35, -3.278354e-08, 0.015970916, 0.035383582, 0.32100433)
+mesh = SubResource("CylinderMesh_1b7js")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=746561432]
+shape = SubResource("BoxShape3D_cynpp")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1106179186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.083763234, 0.693755)
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=314239154]
+target_position = Vector3(0, 0, 20)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=2106857935]
+
+[node name="ProjectileContainer" type="Node3D" parent="." unique_id=1852607082]

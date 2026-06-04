@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://btoxc7ja4qwou"]
+
+[ext_resource type="Script" uid="uid://2rfiblpftgud" path="res://week 3 - projectile & combat/3D/Projectile3D.gd" id="1_7lcrt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4yg3c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yg3c"]
+albedo_color = Color(0.8130979, 0.29436946, 0.26941365, 1)
+emission_enabled = true
+emission = Color(0.98039216, 0.25882354, 0.078431375, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7lcrt"]
+material = SubResource("StandardMaterial3D_4yg3c")
+
+[node name="Projectile3D" type="Area3D" unique_id=175311173]
+script = ExtResource("1_7lcrt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=887903426]
+shape = SubResource("SphereShape3D_4yg3c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1261920166]
+mesh = SubResource("SphereMesh_7lcrt")

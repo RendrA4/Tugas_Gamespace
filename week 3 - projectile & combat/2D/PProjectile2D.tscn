@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cqswaowmfvd0i"]
+
+[ext_resource type="Script" uid="uid://crs32rfydeds4" path="res://week 3 - projectile & combat/2D/Projectile2D.gd" id="1_fw7rc"]
+[ext_resource type="Texture2D" uid="uid://d0hvqy4ikxhxj" path="res://assets/2d/platformer pack/Tiles/star.svg" id="1_rx8lg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4nvqt"]
+radius = 22.022715
+
+[node name="PProjectile2D" type="Area2D" unique_id=2094612991]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_fw7rc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=797099723]
+texture = ExtResource("1_rx8lg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=52895190]
+shape = SubResource("CircleShape2D_4nvqt")

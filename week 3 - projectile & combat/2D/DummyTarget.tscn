@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://brexolbsptbq7"]
+
+[ext_resource type="Texture2D" uid="uid://dyvn5pihciqbb" path="res://assets/2d/platformer pack/Enemies/frog_idle.svg" id="1_1ue5v"]
+[ext_resource type="Script" uid="uid://dgjokjwvo6qw5" path="res://week 3 - projectile & combat/2D/DummyTarget.gd" id="1_2pv0g"]
+[ext_resource type="PackedScene" uid="uid://b74iqvvoe4adr" path="res://week 3 - projectile & combat/2D/2DProjectile.tscn" id="2_hdu2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pv0g"]
+size = Vector2(64, 56)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shcnc"]
+bg_color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6du3"]
+bg_color = Color(0.37254903, 0.8039216, 0.22745098, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_1ue5v"]
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = null
+ProgressBar/styles/background = SubResource("StyleBoxFlat_shcnc")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_n6du3")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pv0g"]
+radius = 304.0411
+
+[node name="DummyTarget" type="CharacterBody2D" unique_id=2078584714 groups=["Enemy", "Player"]]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_2pv0g")
+bullet_scene = ExtResource("2_hdu2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1143136710]
+texture = ExtResource("1_1ue5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=850877846]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2pv0g")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=74287915]
+offset_left = -56.0
+offset_top = -58.0
+offset_right = 64.0
+offset_bottom = -38.0
+theme = SubResource("Theme_1ue5v")
+value = 50.0
+show_percentage = false
+
+[node name="Radar" type="Area2D" parent="." unique_id=834360357]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Radar" unique_id=1663297289]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_2pv0g")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1681608397]
+position = Vector2(-31, 2)
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=5909697]
+wait_time = 1.5
+
+[connection signal="body_entered" from="Radar" to="." method="_on_radar_body_entered"]
+[connection signal="body_exited" from="Radar" to="." method="_on_radar_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
